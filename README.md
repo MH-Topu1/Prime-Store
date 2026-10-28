@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PrimeStore
 
 PrimeStore is a simple e-commerce frontend project built as a college assignment to practice and demonstrate my learning of:
@@ -36,3 +37,6 @@ https://foyez-nirob.github.io/PrimeStore2/
 ## Build by 
 
 Prime Team
+=======
+# Prime-Store
+>>>>>>> 09b609b92ee6ba6b318eb7ccd80de5b9d1e4a60d
