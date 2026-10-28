@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    >
+  
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+  
+    <title>PrimeStore</title>
+  </head>
+
+<body class="scroll-smooth bg-[#f8f9fa] text-[#343a40] font-sans antialiased pt-16">
+
+
+    <!-- Navbar -->
+    <div class="fixed top-0 left-0 right-0 h-16 bg-[#f8f9fa]/80 backdrop-blur-md border-white border-[#e9ecef] z-50 flex items-center justify-between px-6 md:px-12">
+
+      <!-- Left side -->
+      <div class="flex items-center gap-10">
+
+        <h1 class="text-xl font-extrabold text-gray-800">
+          PrimeStore
+        </h1>
+
+        <nav class="flex items-center gap-7 text-sm font-medium">
+          <a href="#products" class="text-sm text-slate-700">Products</a>
+          <a href="#reviews" class="text-sm text-slate-700">Reviews</a>
+          <a href="#contact" class="text-sm text-slate-700">Contact</a>
+        </nav>
+
+      </div>
+
+      <!-- Right side -->
+      <div class="flex items-center gap-4 mr-4">
+
+        <div class="bg-gray-100 rounded-full px-5 py-1 text-sm font-semibold text-gray-700 flex items-center gap-2">
+          <span>
+            <i class="fa-solid fa-money-check-dollar"></i>
+          </span>
+
+          <span id="user-balance" class="text-xs font-bold font-mono">৳</span>
+        </div>
+
+        <button id="cart-toggle" class="relative p-2 text-2xl hover:bg-[#e9ecef] rounded-full transition-colors">
+          <i class="fa-solid fa-cart-arrow-down"></i>
+          <span id="cart-count" class="absolute -top-1 -right-1 bg-[#212529] text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full hidden">0</span>
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Hero image -->
+    <section class="relative w-full h-[500px] overflow-hidden">
+
+      <!-- SLIDER -->
+      <div
+        id="slide_container"
+        class="flex h-full transition-transform duration-500 ease-in-out"
+      >
+    
+        <img
+          src="./images/image1.png"
+          class="w-full h-full object-cover flex-shrink-0"
+          alt="PrimeStore Banner"
+        >
+    
+        <img
+          src="./images/image2.png"
+          class="w-full h-full object-cover flex-shrink-0"
+          alt="PrimeStore Banner"
+        >
+    
+        <img
+          src="./images/image3.png"
+          class="w-full h-full object-cover flex-shrink-0"
+          alt="PrimeStore Banner"
+        >
+    
+        <img
+          src="./images/image4.png"
+          class="w-full h-full object-cover flex-shrink-0"
+          alt="PrimeStore Banner"
+        >
+    
+      </div>
+    
+    
+      <!-- PREVIOUS BUTTON -->
+      <button
+        id="left_btn"
+        class="absolute left-8 top-1/2 -translate-y-1/2 p-4 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-colors z-10"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+    
+    
+      <!-- NEXT BUTTON -->
+      <button
+        id="right_btn"
+        class="absolute right-8 top-1/2 -translate-y-1/2 p-4 bg-white/20 backdrop-blur-md rounded-full text-white hover:bg-white/40 transition-colors z-10"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    
+    
+      <!-- DOTS -->
+      <div
+        id="banner-dots"
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10"
+      ></div>
+    
+    
+      <!-- TEXT CONTENT -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+    
+        <h1 class="text-4xl font-extrabold text-yellow-300 tracking-wide">
+          WELCOME TO OUR STORE
+        </h1>
+    
+        <p class="mt-5 text-lg font-bold text-white">
+          ENJOY SHOPPING FROM OUR SELECTION OF HANDPICKED ITEMS
+        </p>
+    
+      </div>
+    
+    </section>
+
+  <!-- Products -->
+  <section id="products" class="bg-gray-50 py-20 px-10 scroll-mt-24">
+
+    <div class="mb-12 flex flex-col items-center gap-4 lg:flex-row lg:justify-evenly">
+
+      <div>
+        <h2 class="text-3xl font-bold text-slate-900">
+          OUR PRODUCTS
+        </h2>
+
+        <p class="mt-2 text-sm text-gray-500">
+          Quality essentials for every occasion.
+        </p>
+      </div>
+
+      <!-- Search -->
+      <div class="relative w-full sm:w-auto">
+
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+
+        <input
+          type="text"
+          placeholder="Search products..."
+          class="h-10 w-full sm:w-64 rounded bg-gray-200 pl-10 pr-4 text-sm outline-none placeholder:text-gray-500"
+        >
+
+      </div>
+
+      <!-- Sort -->
+      <select id="sort-products" class="h-10 w-full sm:w-40 rounded bg-gray-200 px-4 text-sm outline-none">
+        <option value="default">Sort By</option>
+        <option value="low-high">
+          Price: Low to High
+        </option>
+        <option value="high-low">
+          Price: High to Low
+        </option>
+      
+      </select>
+
+      <!-- Add money -->
+      <button id="add-money-btn" class="h-10 rounded bg-slate-900 px-5 text-sm font-bold text-white">
+        +Add Money(+1000)
+      </button>
+
+    </div>
+
+    <!-- products grid -->
+
+    <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Product cards will be dynamically inserted here -->
+    </div>
+
+    <div id="no-products" class="text-center py-20 hidden">
+      <p class="text-[#343a40]/40 text-lg">No products found matching your search.</p>
+    </div>
+
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-zinc-800 text-white py-20">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-3xl font-bold tracking-tighter uppercase text-center text-white mb-16">
+        CLIENT TESTIMONIALS
+      </h2>
+
+      <div class="relative max-w-3xl mx-auto overflow-hidden">
+       
+        <div id="review-container" class="min-h-[230px]">
+          
+          <div class="text-center transition-all duration-500 opacity-100 translate-y-0" id="review-count">
+
+            <div class="flex justify-center text-2xl gap-1 mb-4">
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span class="text-gray-300">★</span>
+            </div>
+  
+            <p id="review-comment" class="text-xl md:text-2xl font-medium italic mb-8 leading-relaxed"></p>
+
+            <div>
+              <h4 id="review-name" class="font-bold tracking-widest uppercase text-sm"></h4>
+              <p id="review-date" class="text-xs text-[#e9ecef]/60 mt-1"></p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="flex justify-center gap-8 mt-12">
+          
+          <button id="prev-review" class="p-2 border border-white/20 hover:border-white rounded-full transition-colors">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <button id="next-review" class="p-2 border border-white/20 hover:border-white rounded-full transition-colors">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="scroll-mt-24 bg-gray-50 py-20">
+
+    <div class="max-w-4xl mx-auto px-6">
+
+      <div class="text-center flex flex-col items-center gap-3 pb-12">
+
+        <h2 class="text-3xl font-bold text-slate-900">
+          GET IN TOUCH
+        </h2>
+
+        <p class="text-gray-500">
+          Have a question? We'd love to hear from you.
+        </p>
+
+      </div>
+
+      <form class="flex flex-col gap-6">
+
+        <div class="grid grid-cols-2 gap-6">
+
+          <!-- Name -->
+          <div class="flex flex-col gap-2">
+
+            <label class="text-xs font-bold tracking-widest text-gray-500">
+              NAME
+            </label>
+
+            <input
+              type="text"
+              class="h-12 w-full rounded bg-gray-200 px-4 outline-none"
+            >
+
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col gap-2">
+
+            <label class="text-xs font-bold tracking-widest text-gray-500">
+              EMAIL
+            </label>
+
+            <input
+              type="email"
+              class="h-12 w-full rounded bg-gray-200 px-4 outline-none"
+            >
+
+          </div>
+
+        </div>
+
+        <!-- Message -->
+        <div class="flex flex-col gap-2">
+
+          <label class="text-xs font-bold tracking-widest text-gray-500">
+            MESSAGE
+          </label>
+
+          <textarea
+            class="h-40 w-full rounded bg-gray-200 p-4 outline-none"
+          ></textarea>
+
+        </div>
+
+        <!-- Button -->
+        <button
+          type="submit"
+          class="h-14 w-full bg-zinc-900 text-sm font-bold text-white"
+        >
+          SEND MESSAGE
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-zinc-800 py-10 text-white">
+
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-4 gap-10">
+
+      <div>
+
+        <h3 class="font-bold mb-3">
+          Get to Know Us
+        </h3>
+
+        <ul class="space-y-2 text-sm">
+          <li>FOYEZ AHMMED</li>
+          <li>IDRATH HOSSAIN</li>
+          <li>RAKIN ASHAB</li>
+        </ul>
+        <div class="flex gap-4 mt-4">
+          <a href="#" class="text-xs font-bold uppercase tracking-widest hover:text-[#212529] transition-colors">Instagram</a>
+          <a href="#" class="text-xs font-bold uppercase tracking-widest hover:text-[#212529] transition-colors">Twitter</a>
+          <a href="#" class="text-xs font-bold uppercase tracking-widest hover:text-[#212529] transition-colors">Facebook</a>
+        </div>
+      </div>
+
+      <div>
+
+        <h3 class="font-bold mb-3">
+          Make Money with Us
+        </h3>
+
+        <ul class="space-y-2 text-sm">
+          <li>Sell products on PrimeStore</li>
+          <li>Sell on PrimeStore</li>
+          <li>Sell apps on PrimeStore</li>
+          <li>Become an Affiliate</li>
+          <li>Advertise Your Products</li>
+          <li>Self-Publish with Us</li>
+          <li>Host an PrimeStore Hub</li>
+          <li>See More Make Money with Us</li>
+        </ul>
+
+      </div>
+
+      <div>
+
+        <h3 class="font-bold mb-3">
+          PrimeStore Payment Products
+        </h3>
+
+        <ul class="space-y-2 text-sm">
+          <li>PrimeStore Business Card</li>
+          <li>Shop with Points</li>
+          <li>Reload Your Balance</li>
+          <li>PrimeStore Currency Converter</li>
+        </ul>
+
+      </div>
+
+      <div>
+
+        <h3 class="font-bold mb-3">
+          Let Us Help You
+        </h3>
+
+        <ul class="space-y-2 text-sm">
+          <li>Your Account</li>
+          <li>Your Orders</li>
+          <li>Shipping Rates & Policies</li>
+          <li>Returns & Replacements</li>
+          <li>Manage Your Content and Devices</li>
+          <li>Help</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between pt-8 border-[#e9ecef] gap-4">
+      <p class="text-xs text-charcoal/40 font-mono tracking-tighter">© 2026 PRIMESTORE. ALL RIGHTS RESERVED.</p>
+      <p class="text-xs text-charcoal/40 font-mono tracking-tighter">DESIGNED BY PRIME TEAM</p>
+    </div>
+
+  </footer>
+
+  <!-- cart side bar and overlay -->
+
+  <div id="cart-overlay" class="fixed inset-0 bg-[#212529]/40 backdrop-blur-sm z-[100] hidden"></div>
+
+  <div id="cart-sidebar" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-white z-[101] shadow-2xl flex flex-col translate-x-full transition-transform duration-300">
+
+    <div class="p-6 border-b border-[#e9ecef] flex items-center justify-between">
+
+      <div class="flex items-center gap-4">
+        <h2 class="text-lg font-bold tracking-tighter">YOUR CART</h2>
+
+        <span id="cart-status" class="text-xs font-bold font-mono px-2 py-0.5 bg-[#e9ecef] rounded-full">
+          0 ITEMS
+        </span>
+      </div>
+
+      <button id="cart-close" class="p-2 hover:bg-[#e9ecef] rounded-full transition-colors">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+    </div>
+
+    <div id="cart-items" class="flex-grow overflow-y-auto p-6 flex flex-col gap-6">
+      <!-- Cart items injected here -->
+    </div>
+
+    <div id="cart-footer" class="p-6 bg-[#f8f9fa] border-t border-[#e9ecef]">
+
+      <div class="flex flex-col gap-3 mb-6">
+
+        <div class="flex justify-between text-xs font-medium text-[#343a40]/60">
+          <span>Subtotal</span>
+          <span id="subtotal">৳0.00</span>
+        </div>
+
+        <div class="flex justify-between text-xs font-medium text-[#343a40]/60">
+          <span>Shipping Cost</span>
+          <span id="shipping-cost">৳20.00</span>
+        </div>
+
+        <div class="flex justify-between text-xs font-medium text-[#343a40]/60">
+          <span>Delivery Charge</span>
+          <span id="delivery-charge">৳80.00</span>
+        </div>
+
+        <div id="discount-row" class="flex justify-between text-xs font-bold text-green-600 hidden">
+          <span>Discount (10%)</span>
+          <span id="discount-val">-৳0.00</span>
+        </div>
+
+        <div class="pt-3 border-t border-[#e9ecef] flex justify-between">
+          <span class="text-sm font-bold uppercase tracking-widest">Total</span>
+
+          <span id="final-total" class="text-lg font-bold font-mono text-[#212529]">
+            ৳0.00
+          </span>
+        </div>
+
+      </div>
+
+      <div class="flex gap-2 mb-4">
+
+        <input 
+          type="text" 
+          id="coupon-input"
+          placeholder="Coupon Code" 
+          class="flex-grow text-xs p-2 bg-white border border-[#e9ecef] focus:ring-1 focus:ring-[#212529] outline-none"
+        />
+
+        <button 
+          id="apply-coupon-btn"
+          class="px-4 py-2 bg-[#e9ecef] text-[#212529] text-[10px] font-bold uppercase tracking-widest hover:bg-[#343a40] hover:text-white transition-all"
+        >
+          APPLY
+        </button>
+
+      </div>
+
+      <button 
+        id="checkout-btn"
+        class="w-full py-4 bg-[#212529] text-white font-bold text-sm tracking-widest hover:bg-[#343a40] shadow-lg hover:translate-y-[-2px] transition-all"
+      >
+        CHECKOUT
+      </button>
+
+      <p id="insufficient-balance" class="text-[10px] text-center mt-2 text-red-500 font-bold uppercase tracking-tighter hidden">
+        Please add more money to your wallet to complete purchase.
+      </p>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
