@@ -31,7 +31,7 @@ PrimeStore is a simple e-commerce frontend project built as a college assignment
 I built this project after learning the basics of frontend web development to improve my practical skills and understand how real-world interactive websites work.
 
 ## Live Demo
-https://foyez-nirob.github.io/PrimeStore2/
+
 
 
 ## Build by 
